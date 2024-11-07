@@ -1,0 +1,29 @@
+ helm uninstall my-release
+
+PS C:\Users\mattb\OneDrive - UC Leuven-Limburg\Jaar3\cloud\Nieuwe map> kubectl get pvc
+NAME                           STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS      VOLUMEATTRIBUTESCLASS   AGE
+data-my-release-postgresql-0   Pending                                                        <unset>                 15m
+mysql-pv-claim                 Pending                                      rook-ceph-block   <unset>                 6d22h
+PS C:\Users\mattb\OneDrive - UC Leuven-Limburg\Jaar3\cloud\Nieuwe map> kubectl delete pvc data-my-release-postgresql-0  
+
+
+helm install my-release requarks/wiki --values values.yaml
+
+helm repo list
+helm search repo hashicorp
+
+
+kubectl get crd
+
+kubectl get ingress
+
+
+
+PS C:\Users\mattb\OneDrive - UC Leuven-Limburg\Jaar3\cloud\Nieuwe map> kubectl apply -f cluster-issues.yaml
+clusterissuer.cert-manager.io/letsencrypt-prod created
+PS C:\Users\mattb\OneDrive - UC Leuven-Limburg\Jaar3\cloud\Nieuwe map> kubectl get clusterIssuer -n cert-manager
+
+
+kubectl get clusterissuer -n cert-manager
+kubectl get ingress
+kubectl get certificate
