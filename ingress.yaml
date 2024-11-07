@@ -4,7 +4,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wordpress-ingress
-  annotatations:
+  annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
@@ -18,9 +18,7 @@ spec:
             name: wordpress
             port:
               number: 80
-tls:
-- secretname: kuma-tls
-- hosts:
-  - wp.cloudops-1.ucll.cloud
-  
-
+  tls:
+  - secretName: wordpress-tls
+    hosts: 
+      - wp.cloudops-1.ucll.cloud
