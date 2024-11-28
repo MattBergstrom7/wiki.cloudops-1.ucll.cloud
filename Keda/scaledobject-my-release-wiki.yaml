@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: my-release-wiki-cron-scaler
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: my-release-wiki  
+  minReplicaCount: 1       # Scale down to 1 outside working hours
+  cooldownPeriod: 300      # 5-minute cooldown before scaling down
+  triggers:
+  - type: cron
+    metadata:
+      timezone: Europe/Brussels  # Belgium timezone
+      start: "0 6 * * *"         # Scale up at 6:00 
+      end: "15 0 * * *"          # scale down 00:15
+      desiredReplicas: "10"      # Scale to 10 replicas during working hours
+
